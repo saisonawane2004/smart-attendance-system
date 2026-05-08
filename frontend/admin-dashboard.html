@@ -1,0 +1,770 @@
+d<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Smart Attendance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f3f7f6;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --primary: #0f766e;
+            --primary-dark: #115e59;
+            --primary-soft: #ccfbf1;
+            --border: #dbe4e8;
+            --danger: #dc2626;
+            --shadow: 0 14px 42px rgba(15, 23, 42, 0.08);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            color: var(--text);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(153, 246, 228, 0.35) 0, transparent 28%),
+                linear-gradient(180deg, #f8fafc 0%, #eef4f3 100%);
+        }
+
+        .page-shell {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 28px 16px 48px;
+        }
+
+        .topbar,
+        .hero-panel,
+        .surface-card,
+        .stat-card {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 22px;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .brand {
+            margin: 0;
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .hero-panel {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-top: 20px;
+            padding: 26px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(255, 255, 255, 0.95));
+        }
+
+        .eyebrow {
+            margin: 0 0 8px;
+            color: var(--primary);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            margin: 0 0 8px;
+            font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-chip {
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .section-head {
+            margin: 28px 0 14px;
+        }
+
+        .section-title {
+            margin: 0 0 4px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-card {
+            height: 100%;
+            padding: 20px;
+            border-radius: 22px;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .stat-value {
+            margin-top: 6px;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .surface-card {
+            height: 100%;
+            border-radius: 22px;
+            overflow: hidden;
+        }
+
+        .surface-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 18px 20px 0;
+        }
+
+        .surface-body {
+            padding: 20px;
+        }
+
+        .surface-title {
+            margin: 0 0 4px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #334155;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 0.72rem 0.85rem;
+            background: #fbfdfd;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: rgba(15, 118, 110, 0.35);
+            box-shadow: 0 0 0 0.2rem rgba(15, 118, 110, 0.12);
+        }
+
+        .btn {
+            border-radius: 14px;
+            font-weight: 700;
+        }
+
+        .btn-brand {
+            color: #fff;
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-brand:hover {
+            color: #fff;
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .table-clean {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .table-clean th {
+            padding: 14px 16px;
+            background: #f8fafc;
+            color: #334155;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .table-clean td {
+            padding: 14px 16px;
+            vertical-align: middle;
+        }
+
+        .table-clean tbody tr + tr td {
+            border-top: 1px solid #eef2f7;
+        }
+
+        .table-clean tbody tr:hover td {
+            background: #fcfefe;
+        }
+
+        .list-clean {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .list-clean li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eef2f7;
+        }
+
+        .list-clean li:last-child {
+            border-bottom: 0;
+        }
+
+        .pill {
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .message {
+            min-height: 20px;
+            font-size: 0.9rem;
+        }
+
+        .actions {
+            display: grid;
+            gap: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .topbar,
+            .hero-panel,
+            .surface-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-shell">
+    <div class="topbar">
+        <div>
+            <h1 class="brand">Admin Console</h1>
+            <p class="subtitle">Manage users, classes, and daily attendance operations.</p>
+        </div>
+        <button class="btn btn-outline-danger" onclick="logout()">Logout</button>
+    </div>
+
+    <section class="hero-panel">
+        <div>
+            <p class="eyebrow">Overview</p>
+            <h2 class="hero-title">A cleaner dashboard for the whole admin flow.</h2>
+            <p class="subtitle">Create records, review data, and remove entries from one place.</p>
+        </div>
+        <div class="hero-chip">Admin Access</div>
+    </section>
+
+    <div class="section-head">
+        <p class="eyebrow mb-1">Health</p>
+        <h3 class="section-title">System Snapshot</h3>
+        <p class="subtitle">Quick counts for the main records in the system.</p>
+    </div>
+    <div class="row g-3">
+        <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+                <div class="stat-label">Students</div>
+                <div class="stat-value" id="studentCount">0</div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+                <div class="stat-label">Faculty</div>
+                <div class="stat-value" id="facultyCount">0</div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+                <div class="stat-label">Subjects</div>
+                <div class="stat-value" id="subjectCount">0</div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+                <div class="stat-label">Attendance</div>
+                <div class="stat-value" id="attendanceCount">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-head">
+        <p class="eyebrow mb-1">Create</p>
+        <h3 class="section-title">Add New Records</h3>
+        <p class="subtitle">Focused forms with clear labels for the main admin tasks.</p>
+    </div>
+    <div class="">
+        <div class="col-md-6 col-xl-3 ">
+            <div class="surface-card">
+                <div class="surface-body">
+                    <h4 class="surface-title">Add Class</h4>
+                    <form id="classForm">
+                        <label class="form-label">Class Name</label>
+                        <input class="form-control mb-2" id="className" placeholder="Class name" required>
+                        <label class="form-label">Section</label>
+                        <input class="form-control mb-2" id="classSection" placeholder="Section" required>
+                        <label class="form-label">Year</label>
+                        <select class="form-select mb-3" id="classYear" required>
+                            <option value="">Select year</option>
+                            <option value="1">First Year</option>
+                            <option value="2">Second Year</option>
+                            <option value="3">Third Year</option>
+                            <option value="4">B.E (Last Year)</option>
+                        </select>
+                        <button class="btn btn-brand w-100">Create Class</button>
+                    </form>
+                    <div id="classMsg" class="message mt-2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="surface-card">
+                <div class="surface-body">
+                    <h4 class="surface-title">Add Student</h4>
+                    <form id="studentForm">
+                        <label class="form-label">Full Name</label>
+                        <input class="form-control mb-2" id="sName" placeholder="Student name" required>
+                        <label class="form-label">Email</label>
+                        <input class="form-control mb-2" id="sEmail" placeholder="Email" required>
+                        <label class="form-label">Password</label>
+                        <input class="form-control mb-2" id="sPassword" placeholder="Password" required>
+                        <label class="form-label">Roll Number</label>
+                        <input class="form-control mb-2" id="sRoll" placeholder="Roll number" required>
+                        <label class="form-label">Class ID</label>
+                        <input class="form-control mb-3" id="sClassId" placeholder="Class ID" required>
+                        <button class="btn btn-brand w-100">Create Student</button>
+                    </form>
+                    <div id="sMsg" class="message mt-2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="surface-card">
+                <div class="surface-body">
+                    <h4 class="surface-title">Add Faculty</h4>
+                    <form id="facultyForm">
+                        <label class="form-label">Full Name</label>
+                        <input class="form-control mb-2" id="fName" placeholder="Faculty name" required>
+                        <label class="form-label">Email</label>
+                        <input class="form-control mb-2" id="fEmail" placeholder="Email" required>
+                        <label class="form-label">Password</label>
+                        <input class="form-control mb-2" id="fPassword" placeholder="Password" required>
+                        <label class="form-label">Department</label>
+                        <input class="form-control mb-3" id="fDepartment" placeholder="Department" required>
+                        <button class="btn btn-brand w-100">Create Faculty</button>
+                    </form>
+                    <div id="fMsg" class="message mt-2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="surface-card">
+                <div class="surface-body">
+                    <h4 class="surface-title">Add Subject</h4>
+                    <form id="subjectForm">
+                        <label class="form-label">Subject Name</label>
+                        <input class="form-control mb-2" id="subName" placeholder="Subject name" required>
+                        <label class="form-label">Faculty ID</label>
+                        <input class="form-control mb-2" id="subFacultyId" placeholder="Faculty ID" required>
+                        <label class="form-label">Class ID</label>
+                        <input class="form-control mb-3" id="subClassId" placeholder="Class ID" required>
+                        <button class="btn btn-brand w-100">Create Subject</button>
+                    </form>
+                    <div id="subMsg" class="message mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-1">
+        <div class="col-lg-7">
+            <div class="surface-card">
+                <div class="surface-head">
+                    <div>
+                        <h4 class="surface-title">Recent Classes</h4>
+                        <p class="subtitle">Latest class list loaded from the backend.</p>
+                    </div>
+                </div>
+                <div class="surface-body pt-3">
+                    <ul id="classList" class="list-clean">
+                        <li class="text-muted">No classes loaded yet.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="surface-card">
+                <div class="surface-head">
+                    <div>
+                        <h4 class="surface-title">Quick Actions</h4>
+                        <p class="subtitle">Refresh key data without leaving the page.</p>
+                    </div>
+                </div>
+                <div class="surface-body pt-3">
+                    <div class="actions">
+                        <button class="btn btn-outline-success" onclick="loadDashboardData()">Refresh Dashboard</button>
+                        <button class="btn btn-outline-secondary" onclick="loadAttendance()">Refresh Attendance</button>
+                        <button class="btn btn-outline-danger" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-head">
+        <p class="eyebrow mb-1">Manage</p>
+        <h3 class="section-title">Delete Records</h3>
+        <p class="subtitle">Review students and faculty before removing them.</p>
+    </div>
+    <div class="row g-4">
+        <div class="col-xl-6">
+            <div class="surface-card">
+                <div class="surface-head">
+                    <div>
+                        <h4 class="surface-title">Manage Students</h4>
+                        <p class="subtitle">Delete student records</p>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="loadDashboardData()">Refresh</button>
+                </div>
+                <div class="surface-body">
+                    <div id="studentAdminMsg" class="message mb-3"></div>
+                    <label class="form-label">Select Student</label>
+                    <select class="form-select mb-3" id="studentSelect">
+                        <option value="">Choose a student</option>
+                    </select>
+                    <button class="btn btn-outline-danger w-100" onclick="deleteSelectedStudent()">Delete Student</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="surface-card">
+                <div class="surface-head">
+                    <div>
+                        <h4 class="surface-title">Manage Faculty</h4>
+                        <p class="subtitle">Delete faculty records</p>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="loadDashboardData()">Refresh</button>
+                </div>
+                <div class="surface-body">
+                    <div id="facultyAdminMsg" class="message mb-3"></div>
+                    <label class="form-label">Select Faculty</label>
+                    <select class="form-select mb-3" id="facultySelect">
+                        <option value="">Choose a faculty member</option>
+                    </select>
+                    <button class="btn btn-outline-danger w-100" onclick="deleteSelectedFaculty()">Delete Faculty</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-head">
+        <p class="eyebrow mb-1">Attendance</p>
+        <h3 class="section-title">Attendance Records</h3>
+        <p class="subtitle">Latest attendance rows returned by the API.</p>
+    </div>
+    <div class="surface-card">
+        <div class="surface-head">
+            <div>
+                <h4 class="surface-title">All Attendance Records</h4>
+                <p class="subtitle">Use refresh to pull the most recent entries.</p>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary" onclick="loadAttendance()">Refresh</button>
+        </div>
+        <div class="surface-body">
+            <div class="table-responsive">
+                <table class="table-clean">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Student ID</th>
+                        <th>Subject ID</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Lat</th>
+                        <th>Lng</th>
+                    </tr>
+                    </thead>
+                    <tbody id="attendanceBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const API_BASE = 'http://localhost:8080';
+
+    function ensureAdmin() {
+        const user = JSON.parse(localStorage.getItem('user') || 'null');
+        if (!user || user.role !== 'ADMIN') {
+            window.location.href = 'login.html';
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem('user');
+        window.location.href = 'login.html';
+    }
+
+    function setMessage(id, text, type = 'muted') {
+        const element = document.getElementById(id);
+        element.className = `message ${type === 'error' ? 'text-danger' : type === 'success' ? 'text-success' : 'text-muted'}`;
+        element.textContent = text;
+    }
+
+    ensureAdmin();
+
+    document.getElementById('classForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        setMessage('classMsg', '');
+        const res = await fetch(API_BASE + '/admin/classes', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: new URLSearchParams({
+                name: document.getElementById('className').value,
+                section: document.getElementById('classSection').value,
+                yearLevel: document.getElementById('classYear').value
+            })
+        });
+        setMessage('classMsg', res.ok ? 'Class added successfully.' : 'Error adding class.', res.ok ? 'success' : 'error');
+        if (res.ok) loadDashboardData();
+    });
+
+    document.getElementById('studentForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        setMessage('sMsg', '');
+        const res = await fetch(API_BASE + '/admin/students', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: new URLSearchParams({
+                name: document.getElementById('sName').value,
+                email: document.getElementById('sEmail').value,
+                password: document.getElementById('sPassword').value,
+                rollNumber: document.getElementById('sRoll').value,
+                classId: document.getElementById('sClassId').value
+            })
+        });
+        setMessage('sMsg', res.ok ? 'Student added successfully.' : 'Error adding student.', res.ok ? 'success' : 'error');
+        if (res.ok) loadDashboardData();
+    });
+
+    document.getElementById('facultyForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        setMessage('fMsg', '');
+        const res = await fetch(API_BASE + '/admin/faculty', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: new URLSearchParams({
+                name: document.getElementById('fName').value,
+                email: document.getElementById('fEmail').value,
+                password: document.getElementById('fPassword').value,
+                department: document.getElementById('fDepartment').value
+            })
+        });
+        setMessage('fMsg', res.ok ? 'Faculty added successfully.' : 'Error adding faculty.', res.ok ? 'success' : 'error');
+        if (res.ok) loadDashboardData();
+    });
+
+    document.getElementById('subjectForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        setMessage('subMsg', '');
+        const res = await fetch(API_BASE + '/admin/subjects', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: new URLSearchParams({
+                name: document.getElementById('subName').value,
+                facultyId: document.getElementById('subFacultyId').value,
+                classId: document.getElementById('subClassId').value
+            })
+        });
+        setMessage('subMsg', res.ok ? 'Subject added successfully.' : 'Error adding subject.', res.ok ? 'success' : 'error');
+        if (res.ok) loadDashboardData();
+    });
+
+    function updateCounts(data) {
+        document.getElementById('studentCount').textContent = data.students?.length ?? 0;
+        document.getElementById('facultyCount').textContent = data.faculty?.length ?? 0;
+        document.getElementById('subjectCount').textContent = data.subjects?.length ?? 0;
+    }
+
+    function renderClasses(classes) {
+        const classList = document.getElementById('classList');
+        if (!classes || classes.length === 0) {
+            classList.innerHTML = '<li class="text-muted">No classes loaded yet.</li>';
+            return;
+        }
+
+        classList.innerHTML = classes.map(item => `
+            <li>
+                <span>${item.name} - ${item.section}</span>
+                <span class="pill">${item.yearLevel || ''}</span>
+            </li>
+        `).join('');
+    }
+
+    function renderStudents(students) {
+        const select = document.getElementById('studentSelect');
+        if (!students || students.length === 0) {
+            select.innerHTML = '<option value="">No students found</option>';
+            return;
+        }
+
+        select.innerHTML = `
+            <option value="">Choose a student</option>
+            ${students.map(student => `
+                <option value="${student.id}">
+                    ${student.user?.name ?? ''} - ${student.rollNumber ?? ''} - ${student.user?.email ?? ''}
+                </option>
+            `).join('')}
+        `;
+    }
+
+    function renderFaculty(faculty) {
+        const select = document.getElementById('facultySelect');
+        if (!faculty || faculty.length === 0) {
+            select.innerHTML = '<option value="">No faculty found</option>';
+            return;
+        }
+
+        select.innerHTML = `
+            <option value="">Choose a faculty member</option>
+            ${faculty.map(member => `
+                <option value="${member.id}">
+                    ${member.user?.name ?? ''} - ${member.department ?? ''} - ${member.user?.email ?? ''}
+                </option>
+            `).join('')}
+        `;
+    }
+
+    function deleteSelectedStudent() {
+        const id = document.getElementById('studentSelect').value;
+        if (!id) {
+            setMessage('studentAdminMsg', 'Select a student first.', 'error');
+            return;
+        }
+        deleteStudent(id);
+    }
+
+    function deleteSelectedFaculty() {
+        const id = document.getElementById('facultySelect').value;
+        if (!id) {
+            setMessage('facultyAdminMsg', 'Select a faculty member first.', 'error');
+            return;
+        }
+        deleteFaculty(id);
+    }
+
+    async function deleteStudent(id) {
+        if (!window.confirm('Delete this student?')) return;
+        const res = await fetch(API_BASE + `/admin/api/students/${id}`, { method: 'DELETE' });
+        setMessage('studentAdminMsg', res.ok ? 'Student deleted successfully.' : 'Unable to delete student.', res.ok ? 'success' : 'error');
+        if (res.ok) loadDashboardData();
+    }
+
+    async function deleteFaculty(id) {
+        if (!window.confirm('Delete this faculty member?')) return;
+        const res = await fetch(API_BASE + `/admin/api/faculty/${id}`, { method: 'DELETE' });
+        setMessage('facultyAdminMsg', res.ok ? 'Faculty deleted successfully.' : 'Unable to delete faculty.', res.ok ? 'success' : 'error');
+        if (res.ok) loadDashboardData();
+    }
+
+    async function loadDashboardData() {
+        try {
+            const [studentsRes, facultyRes, subjectsRes, classesRes] = await Promise.all([
+                fetch(API_BASE + '/admin/api/students'),
+                fetch(API_BASE + '/admin/api/faculty'),
+                fetch(API_BASE + '/admin/api/subjects'),
+                fetch(API_BASE + '/admin/api/classes')
+            ]);
+
+            const data = {
+                students: studentsRes.ok ? await studentsRes.json() : [],
+                faculty: facultyRes.ok ? await facultyRes.json() : [],
+                subjects: subjectsRes.ok ? await subjectsRes.json() : [],
+                classes: classesRes.ok ? await classesRes.json() : []
+            };
+
+            updateCounts(data);
+            renderClasses(data.classes);
+            renderStudents(data.students);
+            renderFaculty(data.faculty);
+        } catch (error) {
+            renderClasses([]);
+            renderStudents([]);
+            renderFaculty([]);
+        }
+    }
+
+    async function loadAttendance() {
+        const tbody = document.getElementById('attendanceBody');
+        tbody.innerHTML = '<tr><td colspan="7" class="text-muted text-center">Loading attendance...</td></tr>';
+        const res = await fetch(API_BASE + '/admin/attendance');
+        if (!res.ok) {
+            tbody.innerHTML = '<tr><td colspan="7" class="text-muted text-center">Attendance data is unavailable.</td></tr>';
+            return;
+        }
+        const data = await res.json();
+        document.getElementById('attendanceCount').textContent = data.length;
+
+        if (!data.length) {
+            tbody.innerHTML = '<tr><td colspan="7" class="text-muted text-center">No attendance records found.</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = data.map(row => `
+            <tr>
+                <td>${row.id}</td>
+                <td>${row.student.id}</td>
+                <td>${row.subject.id}</td>
+                <td>${row.date}</td>
+                <td>${row.status}</td>
+                <td>${row.latitude ?? ''}</td>
+                <td>${row.longitude ?? ''}</td>
+            </tr>
+        `).join('');
+    }
+
+    loadDashboardData();
+    loadAttendance();
+</script>
+</body>
+</html>

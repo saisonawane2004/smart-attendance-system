@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+<div class="page-wrap">
+    <div class="app-shell">
+        <div class="topbar mb-4">
+            <div>
+                <h2 class="brand">Student Hub</h2>
+                <p class="subtitle">Mark attendance securely with QR + live location</p>
+            </div>
+            <form method="post" th:action="@{/logout}">
+                <button class="btn btn-outline-danger">Logout</button>
+            </form>
+        </div>
+
+        <div class="alert alert-success" th:if="${param.success}" th:text="${param.success}"></div>
+        <div class="alert alert-danger" th:if="${param.error}" th:text="${param.error}"></div>
+        <div class="alert alert-danger" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <div class="panel">
+                    <div class="panel-head">
+                        <h5 class="mb-0">Mark Attendance</h5>
+                    </div>
+                    <div class="panel-body">
+                        <form method="post" th:action="@{/student/attendance/mark}" id="markForm">
+                            <div class="mb-3">
+                                <label class="form-label">QR Token</label>
+                                <input class="form-control" id="qrToken" name="qrToken" placeholder="Paste token from QR scan" th:value="${token}" required>
+                            </div>
+
+                            <div class="d-grid gap-2 mb-3">
+                                <button type="button" class="btn btn-outline-primary" id="toggleScannerBtn" onclick="toggleQrScanner()">Scan QR Code</button>
+                            </div>
+
+                            <div class="panel p-3 mb-3 d-none" id="qrScannerPanel">
+                                <div id="qrReader" style="width: 100%;"></div>
+                                <p class="helper mt-3 mb-2" id="qrScannerStatus">Open the scanner and point your camera at the faculty QR code.</p>
+                                <div class="d-grid gap-2">
+                                    <button type="button" class="btn btn-primary" id="startScannerBtn" onclick="startQrScanner()">Start Scanner</button>
+                                    <button type="button" class="btn btn-outline-secondary" id="stopScannerBtn" onclick="stopQrScanner()" disabled>Stop Scanner</button>
+                                </div>
+                            </div>
+
+                            <div class="row g-2">
+                                <div class="col">
+                                    <label class="form-label">Latitude</label>
+                                    <input class="form-control" id="lat" name="latitude" placeholder="Auto-filled" required>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Longitude</label>
+                                    <input class="form-control" id="lng" name="longitude" placeholder="Auto-filled" required>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-outline-secondary w-100 mt-3" onclick="fillLocation()">Use My Current Location</button>
+                            <button class="btn btn-primary w-100 mt-2">Submit Attendance</button>
+                        </form>
+
+                        <a th:href="@{/student/reports}" class="btn btn-link px-0 mt-3">Open Reports</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="panel">
+                    <div class="panel-head">
+                        <h5 class="mb-0">Attendance History</h5>
+                        <span class="subtitle" th:text="${#lists.size(history)} + ' records'"></span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table-modern">
+                                <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="a:${history}">
+                                    <td th:text="${a.session.subject.name}"></td>
+                                    <td th:text="${a.timestamp}"></td>
+                                    <td><span class="badge-soft-success" th:text="${a.status}"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>
