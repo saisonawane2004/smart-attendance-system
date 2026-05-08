@@ -1,36 +1,36 @@
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\config\DataSeeder.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\config\PasswordConfig.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\config\SecurityConfig.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\AdminApiController.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\AdminController.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\AttendanceApiController.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\AuthController.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\FacultyController.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\StudentController.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\dto\ManualAttendanceRequest.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\dto\MarkAttendanceRequest.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\dto\SessionCreateRequest.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Attendance.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\AttendanceSession.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\AttendanceStatus.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Classroom.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Faculty.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Role.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Student.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Subject.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\User.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\AttendanceRepository.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\AttendanceSessionRepository.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\ClassroomRepository.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\FacultyRepository.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\StudentRepository.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\SubjectRepository.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\UserRepository.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\security\AppUserDetailsService.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\service\AdminService.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\service\AttendanceService.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\service\AuthService.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\service\FacultyService.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\SmartAttendanceApplication.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\utils\LocationUtil.java
-C:\Users\Akash Mohalkar\Downloads\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\utils\QrCodeUtil.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\config\DataSeeder.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\config\PasswordConfig.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\config\SecurityConfig.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\AdminApiController.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\AdminController.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\AttendanceApiController.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\AuthController.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\FacultyController.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\controller\StudentController.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\dto\ManualAttendanceRequest.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\dto\MarkAttendanceRequest.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\dto\SessionCreateRequest.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Attendance.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\AttendanceSession.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\AttendanceStatus.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Classroom.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Faculty.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Role.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Student.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\Subject.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\entity\User.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\AttendanceRepository.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\AttendanceSessionRepository.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\ClassroomRepository.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\FacultyRepository.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\StudentRepository.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\SubjectRepository.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\repository\UserRepository.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\security\AppUserDetailsService.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\service\AdminService.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\service\AttendanceService.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\service\AuthService.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\service\FacultyService.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\SmartAttendanceApplication.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\utils\LocationUtil.java
+C:\Users\saiso\Downloads\sai_final_Project\Smart_Attendace(Final)\smart-attendance-mini\backend\src\main\java\com\example\smartattendance\utils\QrCodeUtil.java
